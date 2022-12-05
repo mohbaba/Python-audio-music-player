@@ -1,21 +1,41 @@
 from pydub import AudioSegment
 from pydub.playback import play
-import glob
+import pygame
 import os
 
-
+pygame.init()
+pygame.mixer.init()
 playlist = "C:/Users/hp/Desktop/gbedu/"
-song_title = "01 Afterglow.m4a"
-# song = os.path.join(playlist,song_title)
-# new_song = AudioSegment.from_file(song)
 playlist_list = os.listdir(playlist)
 
 print(playlist_list)
 # play(new_song)
-clean_audio = []
-os.chdir(playlist)
-for files in playlist_list:
-    exported_files = AudioSegment.from_file(files)
-    song_start = exported_files[:10*1000]
-    play(song_start)
-    
+# clean_audio = []
+def playlist_player():
+    os.chdir(playlist)
+    for files in playlist_list:
+        exported_files = AudioSegment.from_file(files)
+        song_start = exported_files[:10*1000]
+        play(song_start)
+
+def play_song():
+    # this function plays the selected song from the song library or playlist
+    pass 
+
+def pause_song():
+    pass
+
+def play_next_song():
+    # if the next button is pressed,stop the current playing song and then play the next song  
+    pass
+
+def play_prev_song():
+    pass
+
+def repeat():
+    # this repeats the current song until its unpressed
+    pass
+
+def repeat_playlist():
+    # this function repeats the playlist until its unpressed
+    pass
