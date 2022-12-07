@@ -64,10 +64,10 @@ def play_song():
             mixer.music.pause()
         else:
             print('type in p to pause \n')
-        while mixer.music.pause():
-            query = input("Press 'p' to pause")
-            if query == 'r':
-                mixer.music.unpause()
+        # while mixer.music.pause():
+        #     query = input("Press 'p' to pause")
+        #     if query == 'r':
+        #         mixer.music.unpause()
             
             
      
