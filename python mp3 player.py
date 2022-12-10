@@ -1,19 +1,25 @@
 from pydub import AudioSegment
+from threading import Thread
 from pydub.playback import play
 from pygame import mixer
 import pygame
 import os
 
 # pygame.init()
-mixer.init()
+
 playlist = "C:/Users/hp/Desktop/gbedu/"
 playlist_list = os.listdir(playlist)
 os.chdir(playlist)
-# print(playlist_list)
+print(playlist_list)
+print(playlist_list.index('01 Drake - Tuscan Leather.mp3'))
+# file = '01 - Starboy (feat. Daft Punk).mp3'
+# mixer.music.load(file)
+# mixer.music.play()
+
+
 
 def playlist_player():
     for file in playlist_list:
-        # exported_files = AudioSegment.from_file(file)
         mixer.music.load(file)
         mixer.music.play()
         # query = input("Press 'p' to pause")
@@ -29,60 +35,63 @@ def playlist_player():
         # song_start = exported_files[:10*1000]
         # play(song_start)
 
-
-# while True:
-    
-#     print("Press 'p' to pause, 'r' to resume")
-#     print("Press 'e' to exit the program")
-#     query = input("  ")
-    
-#     if query == 'p':
-
-#         # Pausing the music
-#         mixer.music.pause()     
-#     elif query == 'r':
-
-#         # Resuming the music
-#         mixer.music.unpause()
-#     elif query == 'e':
-
-#         # Stop the mixer
-#         mixer.music.stop()
-#         break
         
 
 def play_song():
     # this function plays the selected song from the song library or playlist
+    mixer.init()
     file = '01 - Starboy (feat. Daft Punk).mp3'
     mixer.music.load(file)
     mixer.music.play()
+    while mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
+            pause_song()
     # while mixer.music.get_busy():
-    # According to the pygame documentation mixer.music.get_busy() returns True if the music is playing
-    while True:
-        query = input("Press 'p' to pause \n")
-        if query == 'p':
-            mixer.music.pause()
-        else:
-            print('type in p to pause \n')
-        # while mixer.music.pause():
-        #     query = input("Press 'p' to pause")
-        #     if query == 'r':
-        #         mixer.music.unpause()
+    # According to the pygame documentation mixer.music.get_busy() returns True if the music is playing , but get_busy() does not do exactly what the pygame document says: pause() and unpause() does not change the return value of get_busy().
+        
+    # while True:
+    #     query = input("Press 'p' to pause, 'r' to resume and 'e' to exit \n")
+    #     if query == 'p':
+    #         mixer.music.pause()
             
             
-     
-play_song()
+    #     elif query == 'r':
+    #         mixer.music.unpause()
+            
+                
+    #     elif query == 'e':
+    #         mixer.music.stop()
+            
+                
+            
+# play_song()
 def pause_song():
-    
-    while playlist_player():
-        query = input("Press 'p' to pause")
+    while True:
+        query = input("Press 'p' to pause, 'r' to resume and 'e' to exit \n")
         if query == 'p':
             mixer.music.pause()
-                   
+        elif query == 'r':
+            mixer.music.unpause()
+        elif query == 'e':
+            mixer.music.stop()
+        elif query == 'n':
+            global index
+            index += 1
+            mixer.music.load(playlist_list[index])
+            mixer.music.play()
+                
+            
+# play_song()
+
 
 
 def play_next_song():
     # if the next button is pressed,stop the current playing song and then play the next song  
+    global index
+    index += 1
+    mixer.music.load(playlist_list[index])
+    mixer.music.play()
+    
     pass
 
 def play_prev_song():
@@ -95,3 +104,10 @@ def repeat():
 def repeat_playlist():
     # this function repeats the playlist until its unpressed
     pass
+
+# if __name__ == '__main__':
+#     a = Thread(target = play_song)
+#     b = Thread(target = pause_song)
+    
+#     b.start()
+#     a.start()
