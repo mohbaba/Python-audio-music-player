@@ -1,5 +1,4 @@
 from pydub import AudioSegment
-from threading import Thread
 from pydub.playback import play
 from pygame import mixer
 import pygame
@@ -10,6 +9,7 @@ import os
 playlist = "C:/Users/hp/Desktop/gbedu/"
 playlist_list = os.listdir(playlist)
 os.chdir(playlist)
+index = 0
 print(playlist_list)
 print(playlist_list.index('01 Drake - Tuscan Leather.mp3'))
 # file = '01 - Starboy (feat. Daft Punk).mp3'
@@ -27,7 +27,7 @@ def playlist_player():
         #     mixer.music.pause()
         while mixer.music.get_busy():
             pygame.time.Clock().tick(10)
-            
+            pause_song()
     
     # os.chdir(playlist)
     # for files in playlist_list:
@@ -63,11 +63,11 @@ def play_song():
     #         mixer.music.stop()
             
                 
-            
+playlist_player()
 # play_song()
 def pause_song():
     while True:
-        query = input("Press 'p' to pause, 'r' to resume and 'e' to exit \n")
+        query = input("Press 'p' to pause, 'r' to resume and 'e' to exit 'n' to next  \n")
         if query == 'p':
             mixer.music.pause()
         elif query == 'r':
