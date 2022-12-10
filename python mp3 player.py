@@ -19,6 +19,7 @@ print(playlist_list.index('01 Drake - Tuscan Leather.mp3'))
 
 
 def playlist_player():
+    mixer.init()
     for file in playlist_list:
         mixer.music.load(file)
         mixer.music.play()
