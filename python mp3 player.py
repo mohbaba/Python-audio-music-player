@@ -67,6 +67,10 @@ def pause_song():
             index += 1
             mixer.music.load(playlist_list[index])
             mixer.music.play()
+            if pygame.error:
+                index += 1
+                mixer.music.load(playlist_list[index])
+                mixer.music.play()
         elif query == 'q':
             index -= 1
             mixer.music.load(playlist_list[index])
@@ -77,6 +81,14 @@ def pause_song():
             
 # play_song()
 playlist_player()
+# try:
+#     playlist_player()
+# except pygame.error:
+#     query_1 = input('Press n again')
+#     if query_1 == 'n':
+#         index += 1
+#         mixer.music.load(playlist_list[index])
+#         mixer.music.play()
 
 
 def play_next_song():
