@@ -8,8 +8,8 @@ myLabel.grid(row = 0, column= 1)
 
 #tkinter grid system
 def clickme():
-    myLabel2 = Label(root, text = "What's up my people?")
-    myLabel2.grid(row = 0, column= 0)
+    myLabel2 = Label(root, text ="Hello" + e.get())
+    myLabel2.grid(row = 0, column= 2)
 
 
 # Creating buttons
@@ -20,6 +20,9 @@ my_button = Button(root, text = "Click me!!!!", padx=50, pady=20, command= click
 
 # INPUT FIELDS
 e = Entry(root)
+# The Entry function is used to get input for the user
+
+e.insert(0,"Enter your name: ")
 e.grid(row= 0, column = 0)
 
 
