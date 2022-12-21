@@ -6,6 +6,9 @@ root.title('Simple Calculator' )
 e = Entry(root, width = 35,borderwidth=5 )
 e.grid(row =0,column =0, columnspan = 3, padx = 10, pady = 10)
 
+def quad_func():
+    e.insert(0,'a = ')
+    pass
 
 def button_add(number):
     current = e.get()
@@ -18,15 +21,49 @@ def clear():
 def addition():
     first_number = e.get()
     global f_num
+    global math
+    math = 'addition'
+    f_num = int(first_number)
+    e.delete(0, END)
+
+
+    
+def equal():
+    second_number = e.get()
+    e.delete(0,END)
+    if math == 'addition':
+        e.insert(0,f_num + int(second_number))
+    if math == 'subtraction':
+        e.insert(0,f_num - int(second_number))
+    if math == 'multiplication':
+        e.insert(0,f_num * int(second_number))
+    if math == 'division':
+        e.insert(0,f_num / int(second_number))
+        
+    
+def subtraction():
+    first_number = e.get()
+    global f_num
+    global math
+    math = 'subtraction'
     f_num = int(first_number)
     e.delete(0, END)
     
-def equal():
-    second_number = e.get
-    s_num = int(second_number)
-    result = f_num + s_num
-    e.delete(0,END)
-    e.insert(0,result)
+def multiplication():
+    first_number = e.get()
+    global f_num
+    global math
+    math = 'multiplication'
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def division():
+    first_number = e.get()
+    global f_num
+    global math
+    math = 'division'
+    f_num = int(first_number)
+    e.delete(0, END)
     
     
 
@@ -41,8 +78,10 @@ button_8 = Button(root, text='8',padx = 40, pady = 30,command = lambda:button_ad
 button_9 = Button(root, text='9',padx = 40, pady = 30,command = lambda:button_add(9))
 button_0 = Button(root, text='0',padx = 40, pady = 30,command = lambda:button_add(0))
 add_button = Button(root, text='+',padx =84, pady = 30 , command=addition)
-button_equals = Button(root, text='=',padx =39, pady = 30 , command= equal)
-button_times = Button(root, text='x',padx =39, pady = 30)
+div_button = Button(root, text='/',padx =40, pady = 30 , command=division)
+sub_button = Button(root, text='-',padx =40, pady = 30 , command=subtraction)
+button_equals = Button(root, text='=',padx =39, pady = 30, command= equal  )
+times_button = Button(root, text='x',padx =39, pady = 30 , command=multiplication)
 button_clear = Button(root, text='Clear',padx =77, pady = 30, command = clear)
 
 
@@ -63,6 +102,9 @@ button_0.grid(row =4 , column =0 )
 add_button.grid(row = 4, column = 1, columnspan = 2)
 button_equals.grid(row = 5, column = 0)
 button_clear.grid(row = 5, column = 1 , columnspan = 2)
+div_button.grid(row = 6, column = 0)
+times_button.grid(row = 6, column = 1)
+sub_button.grid(row = 6, column = 2)
 
 
 
