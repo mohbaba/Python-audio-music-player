@@ -23,7 +23,7 @@ def addition():
     global f_num
     global math
     math = 'addition'
-    f_num = int(first_number)
+    f_num = int(float(first_number))
     e.delete(0, END)
 
 
@@ -32,13 +32,13 @@ def equal():
     second_number = e.get()
     e.delete(0,END)
     if math == 'addition':
-        e.insert(0,f_num + int(second_number))
+        e.insert(0,f_num + int(float(second_number)))
     if math == 'subtraction':
-        e.insert(0,f_num - int(second_number))
+        e.insert(0,f_num - int(float(second_number)))
     if math == 'multiplication':
-        e.insert(0,f_num * int(second_number))
+        e.insert(0,f_num * int(float(second_number)))
     if math == 'division':
-        e.insert(0,f_num / int(second_number))
+        e.insert(0,f_num / int(float(second_number)))
         
     
 def subtraction():
@@ -46,7 +46,7 @@ def subtraction():
     global f_num
     global math
     math = 'subtraction'
-    f_num = int(first_number)
+    f_num = int(float(first_number))
     e.delete(0, END)
     
 def multiplication():
@@ -54,7 +54,7 @@ def multiplication():
     global f_num
     global math
     math = 'multiplication'
-    f_num = int(first_number)
+    f_num = int(float(first_number))
     e.delete(0, END)
 
 def division():
@@ -62,7 +62,7 @@ def division():
     global f_num
     global math
     math = 'division'
-    f_num = int(first_number)
+    f_num = int(float(first_number))
     e.delete(0, END)
     
     
