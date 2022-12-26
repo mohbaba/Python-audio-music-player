@@ -7,13 +7,19 @@ e = Entry(root, width = 35,borderwidth=5 )
 e.grid(row =0,column =0, columnspan = 3, padx = 10, pady = 10)
 
 def quad_func():
-    e.insert(0,'a = ')
-    pass
+    a = a.get()
+    global math
+    math = 'quad'
+    a.insert(0, " a = " + str(a))
+    
+
 
 def button_add(number):
     current = e.get()
     e.delete(0, END)
     e.insert(0, str(current) + str(number))
+
+    
     
 def clear():
     e.delete(0, END)
@@ -83,6 +89,7 @@ sub_button = Button(root, text='-',padx =40, pady = 30 , command=subtraction)
 button_equals = Button(root, text='=',padx =39, pady = 30, command= equal  )
 times_button = Button(root, text='x',padx =39, pady = 30 , command=multiplication)
 button_clear = Button(root, text='Clear',padx =77, pady = 30, command = clear)
+quad_function = Button(root, text='quad func',padx =94, pady = 30, command = lambda:quad_func_btn())
 
 
 button_1.grid(row =3, column =0 )
@@ -105,6 +112,7 @@ button_clear.grid(row = 5, column = 1 , columnspan = 2)
 div_button.grid(row = 6, column = 0)
 times_button.grid(row = 6, column = 1)
 sub_button.grid(row = 6, column = 2)
+quad_function.grid(row = 7, column = 0, columnspan = 3)
 
 
 
@@ -113,3 +121,58 @@ sub_button.grid(row = 6, column = 2)
 
 
 root.mainloop()
+
+
+
+
+
+
+# from tkinter import *
+# import math
+
+# def solve_quadratic():
+#     # Get the coefficient values from the input fields
+#     a = float(entry_a.get())
+#     b = float(entry_b.get())
+#     c = float(entry_c.get())
+
+#     # Calculate the discriminant
+#     discriminant = b**2 - 4*a*c
+
+#     # Check if the quadratic has real solutions
+#     if discriminant < 0:
+#         result_label.config(text="The quadratic has no real solutions.")
+#     elif discriminant == 0:
+#         # Calculate the single solution
+#         x = (-b + math.sqrt(discriminant)) / (2*a)
+#         result_label.config(text=f"The quadratic has a single solution: {x:.2f}")
+#     else:
+#         # Calculate the two solutions
+#         x1 = (-b + math.sqrt(discriminant)) / (2*a)
+#         x2 = (-b - math.sqrt(discriminant)) / (2*a)
+#         result_label.config(text=f"The quadratic has two solutions: {x1:.2f} and {x2:.2f}")
+
+# # Create the main window
+# root = Tk()
+# root.title("Quadratic Equation Solver")
+
+# # Create the input fields for the coefficients
+# entry_a = Entry(root, width=5)
+# entry_b = Entry(root, width=5)
+# entry_c = Entry(root, width=5)
+
+# # Create a label for the result
+# result_label = Label(root, text="Enter the coefficients and press 'Solve' to find the solutions.")
+
+# # Create a button to solve the quadratic
+# solve_button = Button(root, text="Solve", command=solve_quadratic)
+
+# # Add the widgets to the window
+# entry_a.pack()
+# entry_b.pack()
+# entry_c.pack()
+# result_label.pack()
+# solve_button.pack()
+
+# # Run the main loop
+# root.mainloop()
